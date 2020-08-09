@@ -1,18 +1,28 @@
 <template>
   <div class="home">
+    <StreamTile
+      v-for="stream in streams"
+      :key="stream.id"
+      :title="stream.title"
+      :thumbnailUrl="stream.thumbnailURL"
+    />
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-    <VueApexCharts type="line" height="800" ref="chart" :options="options" :series="testData" />
+    <!-- <VueApexCharts type="line" height="800" ref="chart" :options="options" :series="testData" /> -->
   </div>
 </template>
 
 <script>
 import moment from 'moment'
-import VueApexCharts from 'vue-apexcharts'
+// import VueApexCharts from 'vue-apexcharts'
+import StreamTile from '@/components/StreamTile'
+
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Home',
   components: {
-    VueApexCharts
+    StreamTile
+    // VueApexCharts
   },
   data: () => ({
     testData: [{ data: [{ x: 0, y: 0 }, { x: 1, y: 8 }, { x: 2, y: -1 }, { x: 3, y: 0 }, { x: 4, y: 2 }, { x: 5, y: -5 }, { x: 6, y: -3 }, { x: 7, y: 10 }, { x: 8, y: -6 }, { x: 9, y: -5 }, { x: 10, y: 5 }, { x: 11, y: -6 }, { x: 12, y: -9 }, { x: 13, y: 2 }, { x: 14, y: 5 }, { x: 15, y: 1 }, { x: 16, y: 2 }, { x: 17, y: -4 }, { x: 18, y: 1 }, { x: 19, y: -1 }, { x: 20, y: 1 }, { x: 21, y: 7 }, { x: 22, y: 1 }, { x: 23, y: -6 }, { x: 24, y: 2 }, { x: 25, y: 5 }, { x: 26, y: 0 }, { x: 27, y: -2 }, { x: 28, y: -3 }] }],
@@ -25,6 +35,7 @@ export default {
     }]
   }),
   computed: {
+    ...mapState(['streams']),
     dataLength () {
       return this.testData[0].data.length
     },
@@ -58,6 +69,13 @@ export default {
       }
     }
   },
+  async created () {
+    try {
+      this.fetchStreams()
+    } catch (error) {
+      console.error('Error fetching streams', error)
+    }
+  },
   mounted () {
     // const me = this
     // setInterval(() => {
@@ -79,6 +97,9 @@ export default {
     //     }])
     //   }
     // }, 1 * 60 * 1000)
+  },
+  methods: {
+    ...mapActions(['fetchStreams'])
   }
 }
 </script>
