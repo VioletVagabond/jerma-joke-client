@@ -1,8 +1,9 @@
 <template>
   <v-card>
     <v-img
-      height="200px"
-      :src="sizedThumbnail">
+      :src="sizedThumbnail"
+      :srcset="srcset"
+    >
     </v-img>
     <v-card-title>
       {{ title }}
