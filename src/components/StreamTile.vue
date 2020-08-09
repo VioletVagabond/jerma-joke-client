@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card tile :to="{ name: 'Stream', params: { id } }">
     <v-img
       :src="sizedThumbnail"
       :srcset="srcset"
@@ -15,6 +15,9 @@
 export default {
   name: 'StreamTile',
   props: {
+    id: {
+      type: String
+    },
     title: {
       type: String
     },

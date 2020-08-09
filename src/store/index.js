@@ -7,9 +7,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    stream: null,
     streams: []
   },
   mutations: {
+    setStream (state, stream) {
+      state.stream = stream
+    },
     setStreams (state, streams) {
       state.streams = streams
     },
@@ -35,6 +39,27 @@ export default new Vuex.Store({
         commit('setStreams', streams)
       } catch (error) {
         console.error(error)
+      }
+    },
+    async fetchStream ({ state, commit }, streamId) {
+      streamId = streamId.toString()
+      const stream = state.streams.find(stream => stream.id === streamId)
+      if (stream) {
+        console.log('loaded from cache')
+        commit('setStream', stream)
+      } else {
+        try {
+          const streamDoc = await db.collection('streams').doc(streamId).get()
+          if (streamDoc.exists) {
+            console.log('loaded from db')
+            commit('setStream', streamDoc.data())
+          } else {
+            console.log('no stream found in db')
+            commit('setStream', null)
+          }
+        } catch (error) {
+          console.error('Error fetching stream', error)
+        }
       }
     }
   },
