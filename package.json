@@ -12,6 +12,7 @@
     "core-js": "^3.6.5",
     "firebase": "^7.17.2",
     "moment": "^2.27.0",
+    "tmi.js": "^1.5.0",
     "vue": "^2.6.11",
     "vue-apexcharts": "^1.6.0",
     "vue-router": "^3.4.2",

@@ -19,6 +19,12 @@ export default new Vuex.Store({
     },
     addStream (state, stream) {
       state.streams.push(stream)
+    },
+    addStreamData (state, data) {
+      state.stream.data.push(data)
+    },
+    updateStreamData (state, { index, total }) {
+      state.stream.data[index].jokeScore = total
     }
   },
   actions: {
