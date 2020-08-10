@@ -25,7 +25,6 @@ export default new Vuex.Store({
     async fetchStreams ({ commit }) {
       try {
         const querySnapshot = await db.collection('streams')
-          .where('type', '==', 'offline')
           .where('userID', '==', process.env.VUE_APP_CHANNEL_ID)
           .orderBy('startedAt', 'desc')
           .limit(6)

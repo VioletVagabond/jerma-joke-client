@@ -15,12 +15,9 @@ export default {
       type: Array
     }
   },
-  data: () => ({
-    testData: [{ data: [{ x: 0, y: 0 }, { x: 1, y: 8 }, { x: 2, y: -1 }, { x: 3, y: 0 }, { x: 4, y: 2 }, { x: 5, y: -5 }, { x: 6, y: -3 }, { x: 7, y: 10 }, { x: 8, y: -6 }, { x: 9, y: -5 }, { x: 10, y: 5 }, { x: 11, y: -6 }, { x: 12, y: -9 }, { x: 13, y: 2 }, { x: 14, y: 5 }, { x: 15, y: 1 }, { x: 16, y: 2 }, { x: 17, y: -4 }, { x: 18, y: 1 }, { x: 19, y: -1 }, { x: 20, y: 1 }, { x: 21, y: 7 }, { x: 22, y: 1 }, { x: 23, y: -6 }, { x: 24, y: 2 }, { x: 25, y: 5 }, { x: 26, y: 0 }, { x: 27, y: -2 }, { x: 28, y: -3 }] }]
-  }),
   computed: {
     dataLength () {
-      return this.testData[0].data.length
+      return this.data[0].data.length
     },
     options () {
       return {
@@ -47,7 +44,7 @@ export default {
               return `${formattedHours}:${formattedMinutes}`
             }
           },
-          tickAmount: 'dataPoints'
+          tickAmount: this.dataLength < 15 ? 'dataPoints' : 15
         }
       }
     }

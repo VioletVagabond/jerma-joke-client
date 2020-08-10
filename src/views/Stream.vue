@@ -1,6 +1,6 @@
 <template>
   <div>
-    <StreamGraph :data="seriesData" v-if="!isLoading" />
+    <StreamGraph :data="seriesData" v-if="!isLoading && stream !== null" />
   </div>
 </template>
 
@@ -21,7 +21,8 @@ export default {
   computed: {
     ...mapState(['stream']),
     seriesData () {
-      const formattedData = this.stream.data.map(d => {
+      const streamData = this.stream.data ? this.stream.data : [{ x: 0, y: 0 }]
+      const formattedData = streamData.map(d => {
         return {
           x: d.interval,
           y: d.jokeScore
