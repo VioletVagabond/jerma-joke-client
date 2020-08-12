@@ -1,5 +1,6 @@
 <template>
   <div>
+    <RandomChart />
     <StreamGraph v-if="!isLoading" />
   </div>
 </template>
@@ -7,12 +8,14 @@
 <script>
 import { mapActions } from 'vuex'
 import StreamGraph from '@/components/StreamGraph'
+import RandomChart from '@/components/RandomChart'
 
 export default {
   name: 'Stream',
   props: ['id'],
   components: {
-    StreamGraph
+    StreamGraph,
+    RandomChart
   },
   data: () => ({
     isLoading: true
