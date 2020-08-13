@@ -1,7 +1,8 @@
 <template>
   <div>
     <line-chart v-if="datacollection" :chart-data="datacollection" :options="options"></line-chart>
-    <v-btn @click="fillData()">Randomize</v-btn>
+    <v-btn @click="fillData(20)">Randomize</v-btn>
+    <v-btn @click="fillData(21)">add</v-btn>
   </div>
 </template>
 
@@ -16,7 +17,7 @@ export default {
     return {
       datacollection: null,
       options: {
-        responsive: false,
+        responsive: true,
         maintainAspectRatio: false,
         pan: {
           enabled: false,
@@ -25,25 +26,29 @@ export default {
         zoom: {
           enabled: true,
           drag: false,
+          speed: 1,
+          threshold: 3,
+          sensitivity: 0,
           mode: 'x'
         }
       }
     }
   },
   mounted () {
-    this.fillData()
+    this.fillData(20)
   },
   methods: {
-    fillData () {
+    fillData (size) {
+      const data = this.getRandomData(size)
       this.datacollection = {
-        labels: this.getRandomData(20).map((l, i) => i),
+        labels: [...data.keys()],
         datasets: [
           {
             label: 'Joke Score Over Time',
             fill: false,
             borderColor: 'red',
             lineTension: 0.3,
-            data: this.getRandomData(20)
+            data: data
           }
         ]
       }
