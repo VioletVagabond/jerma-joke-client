@@ -16,18 +16,16 @@ export default {
     return {
       datacollection: null,
       options: {
-        responsive: true,
+        responsive: false,
         maintainAspectRatio: false,
         pan: {
-          enabled: true,
+          enabled: false,
           mode: 'x'
         },
         zoom: {
           enabled: true,
-          mode: 'x',
-          speed: 1,
-          threshold: 0,
-          sensitivity: 0
+          drag: false,
+          mode: 'x'
         }
       }
     }
@@ -37,16 +35,15 @@ export default {
   },
   methods: {
     fillData () {
-      const data = this.getRandomData(100)
       this.datacollection = {
-        labels: data,
+        labels: this.getRandomData(20).map((l, i) => i),
         datasets: [
           {
             label: 'Joke Score Over Time',
             fill: false,
             borderColor: 'red',
             lineTension: 0.3,
-            data: data
+            data: this.getRandomData(20)
           }
         ]
       }
