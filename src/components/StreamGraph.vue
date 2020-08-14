@@ -60,7 +60,12 @@ export default {
     }
   },
   created () {
-    this.seriesData = this.createSeriesData()
+    const data = this.createSeriesData()
+    this.seriesData = [{
+      name: 'joke score',
+      data: data
+    }]
+
     if (this.stream !== null && this.stream.type === 'live') {
       tmi.connect()
       let updateGraphInterval = null
@@ -107,12 +112,7 @@ export default {
         }
       })
 
-      const interpolatedData = this.interpolateData(formattedData)
-
-      return [{
-        name: 'joke score',
-        data: interpolatedData
-      }]
+      return this.interpolateData(formattedData)
     },
     interpolateData (data) {
       const interpolatedData = []

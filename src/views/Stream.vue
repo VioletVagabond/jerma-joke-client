@@ -1,7 +1,7 @@
 <template>
   <div>
-    <RandomChart />
-    <StreamGraph v-if="false" />
+    <RandomChart v-if="!isLoading" />
+    <StreamGraph v-if="!isLoading" />
   </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
   async created () {
     try {
       this.isLoading = true
-      // await this.fetchStream(this.id)
+      await this.fetchStream(this.id)
       this.isLoading = false
     } catch (error) {
       console.log('Error fetching stream', error)
