@@ -15,6 +15,7 @@
         <iframe
           class="twitch-embed"
           :src="`https://player.twitch.tv/?video=${stream.video.id}&parent=${baseURL2}&parent=${baseURL}&autoplay=false`"
+          height="100%"
           width="100%"
           frameborder="0"
           scrolling="no"
@@ -81,6 +82,6 @@ export default {
 
 <style>
 .twitch-embed {
-  min-height: 360px;
+  min-height: 300px;
 }
 </style>

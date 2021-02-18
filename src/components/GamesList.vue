@@ -16,6 +16,8 @@
           <v-col
             v-for="game in stream.games"
             :key="game.gameID"
+            md="6"
+            sm="4"
             cols="6"
           >
             <v-card>
