@@ -7,21 +7,20 @@
     </v-row>
 
     <v-row v-if="!loading">
-      <v-col cols="12">
+      <v-col md="6" cols="12">
         <GamesList />
       </v-col>
 
-      <!-- <v-col cols="12">
+      <v-col md="6" cols="12">
         <iframe
           class="twitch-embed"
           :src="`https://player.twitch.tv/?video=${stream.video.id}&parent=${baseURL2}&parent=${baseURL}&autoplay=false`"
-          height="100%"
           width="100%"
           frameborder="0"
           scrolling="no"
           allowfullscreen="true">
         </iframe>
-      </v-col> -->
+      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -82,6 +81,6 @@ export default {
 
 <style>
 .twitch-embed {
-  min-height: 300px;
+  min-height: 360px;
 }
 </style>

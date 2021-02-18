@@ -17,24 +17,8 @@
             v-for="game in stream.games"
             :key="game.gameID"
             cols="6"
-            sm="4"
-            md="3"
           >
             <v-card>
-              <!-- <v-toolbar
-                color="primary"
-                flat
-                dense
-              >
-                <v-toolbar-title>
-                  <v-tooltip bottom>
-                    <template v-slot:activator="{ on }">
-                      <span v-on="on">{{ game.name }}</span>
-                    </template>
-                    <span>{{ game.name }}</span>
-                  </v-tooltip>
-                </v-toolbar-title>
-              </v-toolbar> -->
               <v-img
                 :src="game.boxArtURL | sizedImgURL"
                 :lazy-src="require('@/assets/fireman.png')"
@@ -53,9 +37,9 @@
                 </template>
               </v-img>
 
-              <v-card-text class="text-h6 text-truncate" :title="game.name">
+              <!-- <v-card-text class="text-h6 text-truncate" :title="game.name">
                 {{ game.name }}
-              </v-card-text>
+              </v-card-text> -->
             </v-card>
           </v-col>
         </v-row>
