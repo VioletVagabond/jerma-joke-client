@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar app style="z-index: 15">
       <v-toolbar-title class="headline text-uppercase green--text">
-        <span>Jerma </span>
+        <span>Northernlion </span>
         <span class="font-weight-light">Joke Tracker</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>

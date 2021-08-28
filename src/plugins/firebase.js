@@ -3,13 +3,13 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAz0iwy0SUEdgfEepd58a0DPZwxKoD8MQU',
-  authDomain: 'jerma-joke.firebaseapp.com',
-  databaseURL: 'https://jerma-joke.firebaseio.com',
-  projectId: 'jerma-joke',
-  storageBucket: 'jerma-joke.appspot.com',
-  messagingSenderId: '799027726679',
-  appId: '1:799027726679:web:807cf04ad8529c83'
+  apiKey: "AIzaSyCad4kSZWvYym8Ve1coV2J7mpRP7rVTdfE",
+  authDomain: "northernlion-joke-tracker.firebaseapp.com",
+  projectId: "northernlion-joke-tracker",
+  storageBucket: "northernlion-joke-tracker.appspot.com",
+  messagingSenderId: "603798316346",
+  appId: "1:603798316346:web:a6a0c804b8f98382bd1c03",
+  measurementId: "G-91F3S3HRQ0"
 }
 
 firebase.initializeApp(firebaseConfig)
